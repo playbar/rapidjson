@@ -11,6 +11,7 @@ set(EXAMPLES
     filterkeydom
     jsonx
     messagereader
+    mytest
     parsebyparts
     pretty
     prettyauto
