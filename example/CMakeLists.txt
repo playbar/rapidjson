@@ -12,6 +12,7 @@ set(EXAMPLES
     jsonx
     lookaheadparser
     messagereader
+    mytest
     parsebyparts
     pretty
     prettyauto
