@@ -2014,7 +2014,12 @@ private:
         if (count) {
             GenericValue* e = static_cast<GenericValue*>(allocator.Malloc(count * sizeof(GenericValue)));
             SetElementsPointer(e);
+RAPIDJSON_DIAG_PUSH
+#if defined(__GNUC__) && __GNUC__ >= 8
+RAPIDJSON_DIAG_OFF(class-memaccess) // ignore complains from gcc that no trivial copy constructor exists.
+#endif
             std::memcpy(e, values, count * sizeof(GenericValue));
+RAPIDJSON_DIAG_POP
         }
         else
             SetElementsPointer(0);
@@ -2027,7 +2032,12 @@ private:
         if (count) {
             Member* m = static_cast<Member*>(allocator.Malloc(count * sizeof(Member)));
             SetMembersPointer(m);
+RAPIDJSON_DIAG_PUSH
+#if defined(__GNUC__) && __GNUC__ >= 8
+RAPIDJSON_DIAG_OFF(class-memaccess) // ignore complains from gcc that no trivial copy constructor exists.
+#endif
             std::memcpy(m, members, count * sizeof(Member));
+RAPIDJSON_DIAG_POP
         }
         else
             SetMembersPointer(0);
@@ -2362,7 +2372,7 @@ public:
     //!@name Handling parse errors
     //!@{
 
-    //! Whether a parse error has occured in the last parsing.
+    //! Whether a parse error has occurred in the last parsing.
     bool HasParseError() const { return parseResult_.IsError(); }
 
     //! Get the \ref ParseErrorCode of last parsing.

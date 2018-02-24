@@ -74,7 +74,7 @@ public:
     bool HasMember(const char* name) const;
     JsonReader& EndObject();
 
-    JsonReader& StartArray(size_t* size = nullptr);
+    JsonReader& StartArray(size_t* size = 0);
     JsonReader& EndArray();
 
     JsonReader& operator&(bool& b);
@@ -97,7 +97,7 @@ private:
     // PIMPL
     void* mDocument;              ///< DOM result of parsing.
     void* mStack;                 ///< Stack for iterating the DOM
-    bool mError;                  ///< Whether an error is occured.
+    bool mError;                  ///< Whether an error has occurred.
 };
 
 class JsonWriter {
